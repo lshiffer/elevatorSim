@@ -18,7 +18,19 @@ class ElevatorController {
 			this.floors.push(new Floor(i))
 	}
 
+	setGui(gui) {
+		this.gui = gui;
+	}
+
+	getElevators() {
+		return this.elevators;
+	}
+
 	static get MIN_FLOORS() {
 		return MIN_FLOORS;
+	}
+
+	static get MIN_ELEVATORS() {
+		return MIN_ELEVATORS;
 	}
 }

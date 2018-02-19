@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title> Elevator Simulator </title>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+		<link href="./styles/styles.css" rel="stylesheet">
+
+		<script src="./src/Door.js"></script>
+		<script src="./src/Button.js"></script>
+		<script src="./src/Buttons.js"></script>
+		<script src="./src/Elevator.js"></script>
+		<script src="./src/Floor.js"></script>
+		<script src="./src/ElevatorGUI.js"></script>
+		<script src="./src/ElevatorController.js"></script>
+		<script src="./src/main.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			Elevator Simulator
+		</div>
+		<div id="container">
+			<div id="main">
+				<div id="initSettings">
+					Elevators:  <input type="text" id="elevatorCount">
+					Floors:		<input type="text" id="floorCount">
+					<button id="setupSimulation" class="button" type="button">Set Up!</button>
+				</div>
+				<div id="errorMessage"> </div>
+				<div id="elevatorLevels"></div>
+				<div id="elevatorBank">
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

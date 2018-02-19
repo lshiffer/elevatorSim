@@ -18,6 +18,15 @@ class ElevatorController {
 			this.floors.push(new Floor(i))
 	}
 
+	floorRequest(floor, direction) {
+		if (floor > this.MAX_FLOOR || floor < ElevatorController.MIN_FLOORS)
+			throw "Elevator cannot go beyond or below highest floor!";
+
+		this.requests.push(new FloorRequest(floor, direction));
+
+		this.floors[floor].requestConfirmed(direction);
+	}
+
 	setGui(gui) {
 		this.gui = gui;
 	}
@@ -32,5 +41,12 @@ class ElevatorController {
 
 	static get MIN_ELEVATORS() {
 		return MIN_ELEVATORS;
+	}
+}
+
+class FloorRequest {
+	constructor(floor, direction) {
+		this.floor = floor;
+		this.direction = direction;
 	}
 }

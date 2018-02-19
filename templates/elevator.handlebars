@@ -1,0 +1,7 @@
+
+{{#each .}}
+	<div id=elevator{{this.id}} class="elevator">
+		<div id=elevatorFloor{{this.id}} class="elevatorFloor"> {{this.floor}} </div>
+		<div id=elevatorDoor{{this.id}} class="elevatorDoor"> Closed </div>
+	</div>
+{{/each}}

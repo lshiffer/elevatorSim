@@ -21,6 +21,10 @@ class Floor {
 		$("#elevatorLevels").prepend(html);
 	}
 
+	requestConfirmed(direction) {
+		(direction == Button.Direction.Up) ? this.buttonUp.illuminate() : this.buttonDown.illuminate();
+	}
+
 	listenForEvents() {
 		$('.floorButton').click(function(event) {
 			event.stopPropagation();

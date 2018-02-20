@@ -21,22 +21,76 @@ class Elevator {
 		this.destination = [];
 		this.trips = STARTING_TRIPS;
 		this.floorsTraveled = 0;
-		this.start = Elevator_State.IDLE; 
+		this.state = Elevator_State.IDLE; 
+	}
+
+	run() {
+		if (!(this.destination.length > 0))
+			return;
+
+		if (this.door.state == Door.state.OPENED)
+			this.closeDoor();
+
+		else if (this.floor == this.destination[this.destination.length-1])
+			this.completeTrip();
+		else 
+			this.move();
 	}
 
 	move() {
-
+		if (this.floor > this.destination[this.destination.length-1])
+			this.state = Elevator_State.MOVING_DOWN;
+		else
+			this.state = Elevator_State.MOVING_UP;
+		elevatorController.elevatorReport(this.id, this.state);
 	}
 
 	setFloor(floor) {
 
 	}
 
-	completeTrip() {
+	getCurrentFloor() {
+		return this.floor;
+	}
 
+	completeTrip() {
+		this.door.openDoor();
+		this.destination.pop();
+		this.trips++;
+		if (this.trips == MAINTENANCE_REQUIRED)
+			this.state = Elevator_State.MAINTENANCE_REQUIRED;
+		else
+			this.state = Elevator_State.IDLE;
+		elevatorController.elevatorReport(this.id, this.door.state);
 	}
 
 	canTake(floor) {
-		
+		if (this.state == Elevator_State.MAINTENANCE_REQUIRED)
+			return false;
+
+		if (this.state == Elevator_State.IDLE)
+			return true;
+		else if (this.floor > floor && this.state == Elevator_State.MOVING_DOWN && floor > this.destination[this.destination.length-1])
+			return true;
+		else if (this.floor < floor && this.state == Elevator_State.MOVING_UP && floor < this.destination[this.destination.length-1])
+			return true;
+
+		return false;
+	}
+
+	dispatchTo(floor) {
+		this.destination.push(floor);
+	}
+
+	getID() {
+		return this.id;
+	}
+
+	getCurrentState() {
+		return this.state;
+	}
+
+	static get state() {
+		return Elevator_State;
 	}
 }

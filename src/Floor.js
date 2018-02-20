@@ -27,6 +27,7 @@ class Floor {
 
 	listenForEvents() {
 		$('.floorButton').click(function(event) {
+			console.log("e")
 			event.stopPropagation();
 			event.stopImmediatePropagation();
 

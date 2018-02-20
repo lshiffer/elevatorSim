@@ -27,7 +27,9 @@ function createSimulation(elevators, floors) {
 	elevatorGui = new ElevatorGUI(elevatorController.getElevators());
 	elevatorController.setGui(new ElevatorGUI(elevatorController.getElevators()));
 
-
+	window.setInterval(function() {
+		elevatorController.run()
+	}, 1000);
 }
 
 function getInitInput() {

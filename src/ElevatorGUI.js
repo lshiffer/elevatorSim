@@ -5,19 +5,22 @@ class ElevatorGUI {
 		document.getElementById('elevatorBank').innerHTML = html;
 	}
 
-	move() {
-
+	move(id, destination) {
+		setTimeout(this.moved, 1000, id, destination);
 	}
 
-	moved() {
-
+	moved(id, destination) {
+		console.log(destination);
+		$('#elevatorFloor'+id).html(destination);
+		elevatorController.guiReport(id, destination);
 	}
 
-	openDoor() {
-
+	openDoor(id) {
+		console.log(id);
+		$('#elevatorDoor'+id).html("Opened");
 	}
 
-	closeDoor() {
-		
+	closeDoor(id) {
+		$('#elevatorDoor'+id).html("Closed");
 	}
 }

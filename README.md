@@ -51,3 +51,7 @@ From '/':
 *Tested on Chrome.
 
 
+**Considerations**
+Elevators will currently stop at requested floors if the elevator passes that floor despite whether or not the requested direction matches with the elevators current direction...  For instance, if an elevator is moving up to floor 10 from floor 5, and a request to go down is made at floor 8, this elevator will stop on the way.  Additional clarification on this scenario is needed.
+
+Elevator doors remain open once they are opened until the elevator moves again.  This behavior is purely cosmetic as it can be seen as convenient and welcoming for the elevator door to be opened without the need to request the elevator which can be experienced at some hotels/resorts.  This is something that would need additional clarification based on the user needs. 

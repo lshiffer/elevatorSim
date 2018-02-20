@@ -23,6 +23,7 @@ function setupSimulation() {
 }
 
 function createSimulation(elevators, floors) {
+	ElevatorController.MAX_FLOORS = floors;
 	elevatorController = new ElevatorController(elevators, floors);
 	elevatorGui = new ElevatorGUI(elevatorController.getElevators());
 	elevatorController.setGui(new ElevatorGUI(elevatorController.getElevators()));

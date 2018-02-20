@@ -114,6 +114,14 @@ class ElevatorController {
 		return this.elevators;
 	}
 
+	static setMAX_FLOORS(val) {
+		this.MAX_FLOORS = val;
+	}
+
+	static getMAX_FLOORS() {
+		return this.MAX_FLOORS;
+	}
+
 	static get MIN_FLOORS() {
 		return MIN_FLOORS;
 	}

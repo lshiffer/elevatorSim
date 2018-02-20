@@ -13,8 +13,8 @@ class Floor {
 
 	makeGui() {
 		var html = "<div id=\"floor"+this.level+"\" class=\"floor\">Level: "+this.level;
-		// Add check for Max_Floor
-		html+="<button class=\"floorButton\" value=\""+this.level+"\">Up</button/>";
+		if (this.level < ElevatorController.getMAX_FLOORS())
+			html+="<button class=\"floorButton\" value=\""+this.level+"\">Up</button/>";
 		if (this.level > ElevatorController.MIN_FLOORS)
 			html+="<button class=\"floorButton\" value=\""+this.level+"\">Down</button/>";
 		html+="</div>"

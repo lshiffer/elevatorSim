@@ -2,11 +2,6 @@
 const MIN_FLOORS = 1; 
 const MIN_ELEVATORS = 1;
 
-/*
-	TODO
-		No 'Up' on max 
-*/
-
 class ElevatorController {
 
 	constructor(elevators, floors) {

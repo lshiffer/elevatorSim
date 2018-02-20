@@ -42,15 +42,8 @@ class Elevator {
 			this.state = Elevator_State.MOVING_DOWN;
 		else
 			this.state = Elevator_State.MOVING_UP;
+
 		elevatorController.elevatorReport(this.id, this.state);
-	}
-
-	setFloor(floor) {
-
-	}
-
-	getCurrentFloor() {
-		return this.floor;
 	}
 
 	completeTrip() {
@@ -64,6 +57,11 @@ class Elevator {
 		elevatorController.elevatorReport(this.id, this.door.state);
 	}
 
+	/*
+		Should not be able to pick up if direction requested differs from elevator's current direction.
+			Current specs state elevator will pick up a request if elevator is moving and will pass that floor.
+			Needs clarification. 
+	*/
 	canTake(floor) {
 		if (this.state == Elevator_State.MAINTENANCE_REQUIRED)
 			return false;
@@ -80,6 +78,24 @@ class Elevator {
 
 	dispatchTo(floor) {
 		this.destination.push(floor);
+	}
+
+	openedDoor() {
+		elevatorController.elevatorReport(this.id, this.door.state);
+	}
+
+	closeDoor() {
+		this.door.closeDoor();
+		elevatorController.elevatorReport(this.id, this.door.state);
+	}
+
+	setFloor(floor) {
+		this.floor = floor;
+		this.floorsTraveled++; 
+	}
+
+	getCurrentFloor() {
+		return this.floor;
 	}
 
 	getID() {

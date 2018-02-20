@@ -10,13 +10,11 @@ class ElevatorGUI {
 	}
 
 	moved(id, destination) {
-		console.log(destination);
 		$('#elevatorFloor'+id).html(destination);
 		elevatorController.guiReport(id, destination);
 	}
 
 	openDoor(id) {
-		console.log(id);
 		$('#elevatorDoor'+id).html("Opened");
 	}
 

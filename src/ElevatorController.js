@@ -48,14 +48,17 @@ class ElevatorController {
 			}
 		}
 
-		console.log(elevatorID);
-
 		if (elevatorID != null)	
 			this.elevators[elevatorID].dispatchTo(request.floor);
 		else
 			this.requests.push(request);
 	}
 
+	/*
+		Assume first elevator.
+		If second elevator is shown to be moving pass the floor, then take second elevator.
+		If neither can be shown to be moving pass floor, take closest. 
+	*/
 	compareElevators(ele1, ele2, floor) {
 		if (!ele2.canTake(floor))
 			return ele1.getID();
@@ -88,7 +91,6 @@ class ElevatorController {
 		 	this.gui.openDoor(id);
 		 else if (status == Door.state.CLOSED)
 		 	this.gui.closeDoor(id);
-
 	}
 
 	guiReport(id, floor) {
@@ -96,7 +98,6 @@ class ElevatorController {
 	}
 
 	floorRequest(floor, direction) {
-		console.log(floor);
 		if (floor > this.MAX_FLOOR || floor < ElevatorController.MIN_FLOORS)
 			throw "Elevator cannot go beyond or below highest floor!";
 

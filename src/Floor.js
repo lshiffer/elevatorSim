@@ -13,8 +13,8 @@ class Floor {
 
 	makeGui() {
 		var html = "<div id=\"floor"+this.level+"\" class=\"floor\">Level: "+this.level;
-		//if (this.level != ElevatorController.MaxFloors)
-			html+="<button class=\"floorButton\" value=\""+this.level+"\">Up</button/>";
+		// Add check for Max_Floor
+		html+="<button class=\"floorButton\" value=\""+this.level+"\">Up</button/>";
 		if (this.level > ElevatorController.MIN_FLOORS)
 			html+="<button class=\"floorButton\" value=\""+this.level+"\">Down</button/>";
 		html+="</div>"
@@ -27,7 +27,6 @@ class Floor {
 
 	listenForEvents() {
 		$('.floorButton').click(function(event) {
-			console.log("e")
 			event.stopPropagation();
 			event.stopImmediatePropagation();
 
